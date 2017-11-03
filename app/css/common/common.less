@@ -1,0 +1,46 @@
+.clearfix(){
+  *zoom:1;
+  &::after{
+    content:"";
+    clear:both;
+    display: block;
+  }
+}
+
+
+.center(){
+  position: absolute;
+  left:0;
+  top:0;
+  right:0;
+  bottom:0;
+  margin: auto;
+}
+
+.lis(@pic){
+  .center();
+  margin:0;
+  height: 100%;
+  background: url("../img/@{pic}.png");
+  background-size:100% 100% ;
+}
+
+.pic2-li(@num){
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  height:100%;
+  background: url("../img/@{num}.png") no-repeat;
+  background-size: 100% 100%;
+  transition:1s transform;
+}
+
+.pic3-css(){
+  color: #fff;
+  word-wrap: break-word;
+  font-size: 12px;
+  border: 1px solid #fff;
+  box-shadow: 0 0 10px #FFF;
+  border-radius: 5%;
+}

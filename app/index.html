@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+  <title>移动端营销</title>
+  <link rel="stylesheet" href="./css/css.css">
+</head>
+<body>
+  <div id="wrap">
+    <canvas></canvas>
+    <ul class="list">
+      <li class="pic1">
+        <ul class="pin1-list">
+          <li>
+            <p class="p1">曾经做为前端开发的你<br>
+            解决PC兼容性而焦头烂额</p>
+          </li>
+          <li>
+            <p class="p2">而今<br/>
+            移动端H5应用疯狂来袭</p>
+          </li>
+          <li>
+            <p class="p1">你是否已准备充分<br/>
+            学习新技能</p>
+          </li>
+          <li>
+            <p class="p2">曾破茧成蝶、重获新生？</p>
+          </li>
+        </ul>
+      </li>
+      <li class="pic2 hide">
+        <ul class="pin2-list">
+          <li class="pic2-p1"></li>
+          <li class="pic2-p2"></li>
+          <li class="pic2-p3"></li>
+          <li class="pic2-p4"></li>
+          <li class="pic2-p5"></li>
+          <li class="pic2-p6"></li>
+        </ul>
+      </li>
+      <li class="pic3 hide" >
+        <div></div>
+      </li>
+      <li class="pic4 hide">
+        <div class="pic4-d1">
+          transform  transition  rotate  scale  translate  keyframes animation  webkitTransitionEnd webkitAnimationIteration elapsedTime perspective…
+        </div>
+        <div class="pic4-d2">
+          drawImage lineWidth  strokeStyle  lineCap  globalCompositeOperation  moveTo   lineTo  stroke  arc  getImageData…
+        </div>
+        <div class="pic4-d3">
+          audio autoplay loop  paused  play  pause…
+        </div>
+      </li>
+      <li class="pic5 hide"></li>
+    </ul>
+    <div class="arrow"></div>
+    <div class="music 0">
+      <audio src="img/music.mp3" autoplay="autoplay" loop="loop"></audio>
+    </div>
+  </div>
+</body>
+<script src="js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="js/touchs.js"></script>
+<script type="text/javascript" src="js/scratch%20card.js"></script>
+<script>
+  //禁止系统默认行为
+  document.addEventListener("touchstart",function(ev){
+    ev=ev||evnet;
+    ev.preventDefault();
+  });
+//rem适配
+  (function(){
+    var styleNode = document.createElement("style");
+    var width = document.documentElement.clientWidth/16;
+    styleNode.innerHTML="html{font-size:"+width+"px!important}";
+    document.body.appendChild(styleNode);
+  })();
+
+
+      window.onload = function () {
+        //获取音乐的相关元素
+        var audio = document.querySelector("#wrap .music>audio");
+        var music = document.querySelector("#wrap> .music");
+
+
+        //有关音乐的函数
+        musicFn();
+        function musicFn(){
+          music.onclick=function(){//点击音乐小图标后
+            if(audio.paused){//判断是否停止,如果是就播放,并且让他转起来
+              audio.play();
+              music.classList.add("anima");
+            }else{//否则不转,并且停止播放
+              audio.pause();
+              music.classList.remove("anima");
+            }
+          }
+        }
+
+        var pic4_d1 = document.querySelector("#wrap .list .pic4 .pic4-d1")
+        var pic4_d2 = document.querySelector("#wrap .list .pic4 .pic4-d2")
+        var pic4_d3 = document.querySelector("#wrap .list .pic4 .pic4-d3")
+
+        pic4_d1.style.width = "35%"
+        pic4_d1.style.height = "20%"
+
+        pic4_d2.style.width = "43%"
+        pic4_d2.style.height = "13%"
+
+        pic4_d3.style.width = "17%"
+        pic4_d3.style.height = "25%"
+
+
+
+        //出入场动画
+        var preIndex = 0;//出厂动画的下标
+        var outInAn =[
+          {
+            //第一屏入场动画
+            in:function () {
+             var p1s =document.querySelectorAll("#wrap .list .pic1 .pin1-list .p1")
+              for(var i = 0;i<p1s.length;i++){
+                p1s[i].style.transform = "translateX(0%)";
+                p1s[i].style.opacity = 1;
+              }
+              var p2s =document.querySelectorAll("#wrap .list .pic1 .pin1-list .p2")
+              for(var i = 0;i<p1s.length;i++){
+                p2s[i].style.transform = "translateX(0%)";
+                p2s[i].style.opacity = 1;
+              }
+            },
+            //第一屏出场动画
+            out:function () {
+              var p1s =document.querySelectorAll("#wrap .list .pic1 .pin1-list .p1")
+              for(var i = 0;i<p1s.length;i++){
+                p1s[i].style.transform = "translateX(-100%)";
+                p1s[i].style.opacity = 0;
+              }
+              var p2s =document.querySelectorAll("#wrap .list .pic1 .pin1-list .p2")
+              for(var i = 0;i<p1s.length;i++){
+                p2s[i].style.transform = "translateX(100%)";
+                p2s[i].style.opacity = 0;
+              }
+            }
+          },
+          {
+            in:function () {
+              var pic2_p1 = document.querySelector("#wrap .list .pic2 .pin2-list .pic2-p1");
+              var pic2_p2 = document.querySelector("#wrap .list .pic2 .pin2-list .pic2-p2");
+              var pic2_p3 = document.querySelector("#wrap .list .pic2 .pin2-list .pic2-p3");
+              var pic2_p4 = document.querySelector("#wrap .list .pic2 .pin2-list .pic2-p4");
+              var pic2_p5 = document.querySelector("#wrap .list .pic2 .pin2-list .pic2-p5");
+              var pic2_p6 = document.querySelector("#wrap .list .pic2 .pin2-list .pic2-p6");
+              pic2_p1.style.transform = "translate(-100px,-100px)";
+              pic2_p2.style.transform = "translate(0,-150px)";
+              pic2_p3.style.transform = "translate(100px,-100px)";
+              pic2_p4.style.transform = "translate(-100px,100px)";
+              pic2_p5.style.transform = "translate(0px,150px)";
+              pic2_p6.style.transform = "translate(100px,100px)";
+            },
+            out:function () {
+              var pic2_p1 = document.querySelector("#wrap .list .pic2 .pin2-list .pic2-p1")
+              var pic2_p2 = document.querySelector("#wrap .list .pic2 .pin2-list .pic2-p2")
+              var pic2_p3 = document.querySelector("#wrap .list .pic2 .pin2-list .pic2-p3")
+              var pic2_p4 = document.querySelector("#wrap .list .pic2 .pin2-list .pic2-p4")
+              var pic2_p5 = document.querySelector("#wrap .list .pic2 .pin2-list .pic2-p5")
+              var pic2_p6 = document.querySelector("#wrap .list .pic2 .pin2-list .pic2-p6")
+              pic2_p1.style.transform = "translate(0,0)";
+              pic2_p2.style.transform = "translate(0,0)";
+              pic2_p3.style.transform = "translate(0,0)";
+              pic2_p4.style.transform = "translate(0,0)";
+              pic2_p5.style.transform = "translate(0,0)";
+              pic2_p6.style.transform = "translate(0,0)";
+            }
+          },
+          {
+            in:function () {
+              var pic3_div = document.querySelector("#wrap .list .pic3 div");
+              console.log(pic3_div);
+              pic3_div.style.transform = "rotateY(720deg)";
+            },
+            out:function () {
+              var pic3_div = document.querySelector("#wrap .list .pic3 div");
+              pic3_div.style.transform = "rotateY(0deg)";
+            }
+
+          },
+          {
+            in:function () {
+              var pic4_d1 = document.querySelector("#wrap .list .pic4 .pic4-d1")
+              var pic4_d2 = document.querySelector("#wrap .list .pic4 .pic4-d2")
+              var pic4_d3 = document.querySelector("#wrap .list .pic4 .pic4-d3")
+
+              pic4_d1.style.width = "35%"
+              pic4_d1.style.height = "20%"
+              pic4_d1.style.fontSize = "10%"
+
+              pic4_d2.style.width = "43%"
+              pic4_d2.style.height = "13%"
+              pic4_d2.style.fontSize = "10%"
+
+              pic4_d3.style.width = "17%"
+              pic4_d3.style.height = "25%"
+              pic4_d3.style.fontSize = "10%"
+            },
+            out:function () {
+              var pic4_d1 = document.querySelector("#wrap .list .pic4 .pic4-d1")
+              var pic4_d2 = document.querySelector("#wrap .list .pic4 .pic4-d2")
+              var pic4_d3 = document.querySelector("#wrap .list .pic4 .pic4-d3")
+              pic4_d1.style.width = "0"
+              pic4_d1.style.height = "0"
+              pic4_d1.style.fontSize = "0"
+
+              pic4_d2.style.width = "0"
+              pic4_d2.style.height = "0"
+              pic4_d2.style.fontSize = "0"
+
+              pic4_d3.style.width = "0"
+              pic4_d3.style.height = "0"
+              pic4_d3.style.fontSize = "0"
+            }
+          },{}]
+
+        outInAn[0].in()
+        setTimeout(function () {
+          outInAn[0].out()
+        },1100)
+
+
+
+
+
+      }
+
+
+
+</script>
+</html>

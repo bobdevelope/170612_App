@@ -1,0 +1,53 @@
+@keyframes arrowAnimation{
+    0%{
+      transform: translateY(0%);
+      opacity: 1;
+    }
+    50%{
+      transform: translateY(-50%);
+      opacity: .5;
+    }
+    100%{
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+}
+
+@keyframes musicRotate {
+  to{
+    transform: rotate(0deg);
+  }
+  from{
+    transform: rotate(360deg);
+  }
+}
+
+.moveToBottom{
+  -webkit-animation: moveToBottom .6s ease both;
+  animation: moveToBottom .6s ease both;
+}
+@keyframes moveToBottom {
+  from{}
+  to{transform: translateY(100%);}
+}
+
+.moveFromTop{
+  -webkit-animation: moveFromTop .6s ease both;
+  animation: moveFromTop .6s ease both;
+}
+@keyframes moveFromTop {
+  from{}
+  to{transform: translateY(0%);}
+}
+
+//页面从视口到上的动画效果
+.moveToTop {
+  -webkit-animation: moveToTop .6s ease both;  //缺少-webkit-animation，动画不兼容；
+  animation: moveToTop .6s ease both;
+}
+
+
+@-webkit-keyframes moveToTop {
+  from { }
+  to { -webkit-transform: translateY(-100%); }
+}
