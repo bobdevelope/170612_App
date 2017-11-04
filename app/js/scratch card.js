@@ -1,4 +1,5 @@
-(function () {
+function scratch() {
+
   var canvas = document.querySelector('canvas');
   if(canvas.getContext){
     var ctx = canvas.getContext("2d");
@@ -18,10 +19,10 @@
       var touchC = ev.changedTouches[0];
       var x = touchC.clientX;
       var y = touchC.clientY;
-      ctx.globalCompositeOperation="destination-out"
+      ctx.globalCompositeOperation="destination-out";
       ctx.lineWidth=40;
       ctx.lineCap="round";
-      ctx.lineJoin="round"
+      ctx.lineJoin="round";
       ctx.beginPath();
       ctx.moveTo(x,y);
       ctx.lineTo(x+1,y+1);
@@ -53,11 +54,17 @@
       if(flag>allPx/2){
         canvas.style.opacity=0;
       }
-      canvas.addEventListener("transitionend",function(){
-        this.remove()
+      canvas.addEventListener("transitionend",function(){//canvas动画结束后
+        this.remove();//删除canvas
+        touchs();//让移动的逻辑生效
+        outInAn[0].in();//让第一屏动画入场
+        musicFn();//让音乐响起来并且让你们的点击事件生效
       })
 
     })
 
+
+
   }
-})()
+}
+scratch()
